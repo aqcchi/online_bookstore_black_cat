@@ -11,7 +11,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">#}
   <title>Online Bookstore</title>
 </head>
 
@@ -55,7 +55,7 @@
     <!-- search css -->
     <form class="search" action="{% url 'search_results' %}" method="get">
       <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <link rel="stylesheet" href="{% static 'css/../static/base.css' %}">
       <i class="fas fa-search"></i>
       <input name="q" class="fas fa-search" type="text" autocomplete="off" placeholder="Search">
     </form>
