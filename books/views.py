@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q
 from books.models import Book
-from datetime import datetime
 
 
 class HomePageView(TemplateView):
@@ -39,3 +38,7 @@ class SearchResultsListView(ListView):
             Q(title__icontains=query) | Q(author__icontains=query)
             )
 
+
+class BookCheckoutView(DetailView):
+    model = Book
+    template_name = 'checkout.html'

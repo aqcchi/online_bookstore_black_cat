@@ -17,12 +17,11 @@
     </div>
   </div>
 <p>Price: $ {{ object.price|floatformat:2 }}</p>
-
-
-{#{% if object.book_available is True %}#}
-{#<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>#}
-{#{% else %}#}
-{#<h4 class="text-danger">Out of Stock !</h4>#}
-{#{% endif %}#}
+    
+{% if object.book_available is True %}
+<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>
+{% else %}
+<h4 class="text-danger">Out of Stock !</h4>
+{% endif %}
 
 {% endblock content %}
