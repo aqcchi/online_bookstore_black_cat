@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q
@@ -39,6 +40,7 @@ class SearchResultsListView(ListView):
             )
 
 
-class BookCheckoutView(DetailView):
+class BookCheckoutView(LoginRequiredMixin, DetailView):
     model = Book
     template_name = 'checkout.html'
+    login_url = 'login'
