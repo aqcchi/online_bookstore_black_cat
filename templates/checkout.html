@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta id="meta" name="viewport"
+		content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+	<style type="text/css">
+		body {
+			background-color: #FFFF99;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+		{% if object.book_available %}
+		<div class="row">
+			<div class="col-lg">
+				<br><div class="text-center" style="width: 22rem;">
+					<img src="{{ object.image_url }}" class="card-img">
+				  </div>
+			</div>
+			<div class="col-lg">
+				<br>
+				<div class="card card-body">
+					<h3>{{object.title}}</h3>
+					<hr>
+					<h4>Total: ${{object.price|floatformat:2}}</h4>
+					<hr>
+                    <button>Complete Purchase</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% else %}
+	<div class="mx-auto" style="width: 340px;">
+	<h4 class="text-danger">Sorry, this book is out of Stock !</h4>
+	{% endif %}
+</body>
+
+</html>
+
+{% endblock content %}
