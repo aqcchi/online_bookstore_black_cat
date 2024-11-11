@@ -24,7 +24,7 @@
     </a>
     <div class="btn-group dropright">
       <a class="nav-link dropdown-toggle ms-3" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-{#        {{user}}#}
+        {{user}}
           <h4>User</h4>
       </a>
 
@@ -32,13 +32,15 @@
 
       <div class="dropdown-menu">
         {% if user.is_authenticated %}
-{#        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>#}
-        <a class="dropdown-item" href="#">Log Out</a>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item">Log Out</button>
+        </form>
         {% else %}
 {#        <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>#}
 {#        <a class="dropdown-item text-secondary" href="{% url 'signup' %}">Sign Up</a>#}
-        <a class="dropdown-item text-secondary" href="#">Log In</a>
-        <a class="dropdown-item text-secondary" href="#">Sign Up</a>
+        <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>
+        <a class="dropdown-item text-secondary" href="{% url 'signup' %}">Sign Up</a>
         {% endif %}
         </div>
     </div>
