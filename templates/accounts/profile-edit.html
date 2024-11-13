@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <h1>Edit Profile</h1>
+
+    <form method="post" enctype="multipart/form-data"> <!-- required when form includes file fields  -->
+        {% csrf_token %}
+        
+        <div>
+            <label>Username:</label>
+            <p>{{ user.username }}</p>  
+        </div>
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    <a href="{% url 'profile-details' %}" class="btn btn-secondary">Cancel</a>
+</body>
+
+{% endblock %}

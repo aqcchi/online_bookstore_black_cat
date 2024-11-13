@@ -13,7 +13,14 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         # Add custom context data (e.g., a list of books)
-        context['welcome_message'] = 'Welcome to our Online Bookstore "The Black Cat"!'
+        context['welcome_message'] = '''
+            <h1>Welcome to our Online Bookstore "The Black Cat"!</h1>
+            <p>The bookstore is named after Edgar Allan Poe’s short story of the same name – The Black Cat, and it is the perfect place for curious people who love books... and cats.</p>
+            <p>Books and cats... what more does a person need in order to be happy?!</p>
+            <p>The bookstore is a small family business that we embarked on with a lot of love and enthusiasm, with the hope that there are still people who prefer physical books over e-readers. Our hopes were fulfilled, and now we are happy to announce we have a large number of regular customers who visit us weekly, even daily.</p>
+            <p>We hope you will also become a part of our book-loving family!</p>
+            <p>Come visit us! :)</p>
+        '''
         # context['books'] = Book.objects.all()  # Fetch all books from the database
 
         return context

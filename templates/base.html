@@ -11,7 +11,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-{#    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <title>Online Bookstore</title>
 </head>
 
@@ -48,8 +48,16 @@
     </div>
   
   <li class="nav-item">
-      <a class="nav-link" href="{% url 'books-list' %}">Books List</a> <!-- Link to books list -->
+      <a class="nav-link" href="{% url 'books-list' %}">Books List</a> 
   </li>
+  {% if user.is_authenticated %}
+      {% if user.profile %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile-details' %}">Profile</a> 
+          </li>
+      {% endif %}
+  {% endif %}
+  
   <li class="nav-item">
       <a class="nav-link" href="#">About</a>
   </li>
