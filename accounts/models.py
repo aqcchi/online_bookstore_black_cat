@@ -20,5 +20,10 @@ class Profile(models.Model):
         blank=True
     )
 
+    email = models.EmailField(
+        null=True,
+        blank=True,
+    )
+
     def __str__(self):
         return f"{self.user.username}'s profile"

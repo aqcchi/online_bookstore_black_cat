@@ -7,6 +7,12 @@ class Book(models.Model):
 
     author = models.CharField(max_length=50)
 
+    authors = models.ManyToManyField(
+        to='authors.Author',
+        blank=True,
+        related_name='books',
+    )
+
     description = models.TextField(default=None)
 
     price = models.DecimalField(
