@@ -37,6 +37,7 @@ MY_APPS = [
     'books.apps.BooksConfig',
     'authors.apps.AuthorsConfig',
     'accounts.apps.AccountsConfig',
+    'common.apps.CommonConfig',
 ]
 
 INSTALLED_APPS = [

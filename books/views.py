@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q
 from books.models import Book
+from common.forms import CreateCommentForm
 
 
 class HomePageView(TemplateView):
@@ -34,6 +35,13 @@ class BooksListView(ListView):
 class BooksDetailView(DetailView):
     model = Book
     template_name = 'book-details.html'
+    context_object_name = 'book'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['all_comments'] = context['book'].comments.all()
+        context['comment_form'] = CreateCommentForm()
+        return context
 
 
 class SearchResultsListView(ListView):
