@@ -5,8 +5,6 @@ class Book(models.Model):
 
     title = models.CharField(max_length=100)
 
-    author = models.CharField(max_length=50)
-
     authors = models.ManyToManyField(
         to='authors.Author',
         blank=True,
@@ -28,6 +26,16 @@ class Book(models.Model):
     )
 
     book_available = models.BooleanField(default=False)
+
+    # number_of_copies = models.PositiveIntegerField()
+
+    # condition_choices = [
+    #     ('new', 'New'),
+    #     ('used', 'Used'),
+    #     ('damaged', 'Damaged'),
+    # ]
+    #
+    # condition = models.CharField(max_length=10, choices=condition_choices)
 
     def __str__(self):
         return self.title
