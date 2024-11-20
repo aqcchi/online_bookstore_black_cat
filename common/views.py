@@ -48,7 +48,7 @@ def edit_comment(request, comment_id):
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
 
-    # Ensure the user can only delete their own comment (already handled by template logic)
+    # ensuring the user can only delete their own comment (already handled by template logic)
     if request.method == 'POST':
         comment.delete()  # Delete the comment
         return redirect('book-details', pk=comment.to_book.pk)
