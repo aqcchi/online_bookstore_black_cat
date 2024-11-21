@@ -14,14 +14,24 @@
             {% for author in book.authors.all %}
                 {{ author }}{% if not forloop.last %}, {% endif %}
             {% endfor %}
-</p>
+          </p>
         <hr>
           <p class="card-text">{{ book.description }}</p>
+            {% if user.is_authenticated %}
+                {% if user.is_staff or user.is_superuser %}
+                    <a href="{% url 'book-edit' book.pk %}" class="btn btn-primary mt-3">Edit Book</a>
+                    <a href="{% url 'book-delete' book.pk %}" class="btn btn-primary mt-3">Delete Book</a>
+                {% endif %}
+            {% endif %}
         </div>
       </div>
     </div>
   </div>
-<p>Price: $ {{ book.price|floatformat:2 }}</p>
+    
+    {% if book.condition %}
+        <p>Condition: {{ book.condition }}</p>
+    {% endif %}
+    <p>Price: $ {{ book.price|floatformat:2 }}</p>
     
 {% if book.book_available %}
     <a href="{% url 'checkout' book.pk %}" class="btn btn-outline-success" role="button">Buy Now</a>

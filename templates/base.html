@@ -37,15 +37,20 @@
             <button type="submit" class="dropdown-item">Log Out</button>
         </form>
         {% else %}
-{#        <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>#}
-{#        <a class="dropdown-item text-secondary" href="{% url 'signup' %}">Sign Up</a>#}
-        <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>
-        <a class="dropdown-item text-secondary" href="{% url 'signup' %}">Sign Up</a>
+            <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>
+            <a class="dropdown-item text-secondary" href="{% url 'signup' %}">Sign Up</a>
         {% endif %}
         </div>
     </div>
-    <div class="mx-auto" style="width: 10px;">
+  
+  <!-- Superuser/staff ONLY functionalities -->
+  {% if request.user.is_superuser or request.user.is_staff %}
+      <li><a href="{% url 'add-book' %}">Add Book</a></li>
+  {% endif %}
+
+  <div class="mx-auto" style="width: 10px;">
     </div>
+      
   
   <li class="nav-item">
       <a class="nav-link" href="{% url 'books-list' %}">Books List</a> 

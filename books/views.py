@@ -1,7 +1,10 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
+
+from books.forms import BookAddForm, BookEditForm
 from books.models import Book
 from common.forms import CreateCommentForm
 
@@ -30,6 +33,38 @@ class HomePageView(TemplateView):
 class BooksListView(ListView):
     model = Book
     template_name = 'books-list.html'
+
+
+class BookAddView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Book
+    form_class = BookAddForm
+    template_name = 'books/book-add.html'
+    success_url = reverse_lazy('books-list')
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
+
+
+class BookEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Book
+    form_class = BookEditForm
+    template_name = 'books/book-edit.html'
+
+    def get_success_url(self):
+        # redirecting to the book details page for the current book
+        return reverse_lazy('book-details', kwargs={'pk': self.object.pk})
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
+
+
+class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Book
+    template_name = 'books/book-delete.html'
+    success_url = reverse_lazy('books-list')
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
 
 
 class BooksDetailView(DetailView):
