@@ -6,6 +6,9 @@
     {% for author in book.authors.all %}
         {{ author }}{% if not forloop.last %}, {% endif %}
     {% endfor %}
+    {% if author not in book.authors.all %}
+        <span>Unknown</span>
+    {% endif %}
 
 <form method="POST">
     {% csrf_token %}

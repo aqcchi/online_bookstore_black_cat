@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<h3>Are you sure you want to delete this author?</h3>
+<p><strong>{{ author }}</strong> by 
+    {% for book in author.books.all %}
+        {{ book }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete them</button>
+</form>
+
+<p><a href="{% url 'author-details' author.pk %}">Cancel</a></p>
+
+{% endblock %}

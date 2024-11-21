@@ -12,8 +12,12 @@
           <h4 class="card-title">{{ book.title }}</h4>
           <p class="card-text">Author{% if book.authors.count > 1 %}s{% endif %}: 
             {% for author in book.authors.all %}
-                {{ author }}{% if not forloop.last %}, {% endif %}
+              <a href="{% url 'author-details' author.pk %}">{{ author }}</a>
+                {% if not forloop.last %}, {% endif %}
             {% endfor %}
+{#            {% if author not in book.authors.all %}#}
+{#                <span>Unknown</span>#}
+{#            {% endif %}#}
           </p>
         <hr>
           <p class="card-text">{{ book.description }}</p>
