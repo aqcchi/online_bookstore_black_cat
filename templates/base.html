@@ -46,6 +46,7 @@
   <!-- Superuser/staff ONLY functionalities -->
   {% if request.user.is_superuser or request.user.is_staff %}
       <li><a href="{% url 'add-book' %}">Add Book</a></li>
+      <li><a href="{% url 'add-author' %}">Add Author</a></li>
   {% endif %}
 
   <div class="mx-auto" style="width: 10px;">
@@ -53,7 +54,10 @@
       
   
   <li class="nav-item">
-      <a class="nav-link" href="{% url 'books-list' %}">Books List</a> 
+      <a class="nav-link" href="{% url 'books-list' %}">Books List</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" href="{% url 'authors-list' %}">Authors List</a> 
   </li>
   {% if user.is_authenticated %}
       {% if user.profile %}
