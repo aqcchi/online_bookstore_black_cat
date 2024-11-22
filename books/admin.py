@@ -29,7 +29,7 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('product', 'created_at')
-    search_fields = ('product',)
+    list_display = ('ordered_book', 'user', 'created_at')
+    search_fields = ('ordered_book__title', 'user__username')
     ordering = ('created_at',)
 
