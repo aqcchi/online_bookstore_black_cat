@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 
 from books.forms import BookAddForm, BookEditForm
-from books.models import Book
+from books.models import Book, Order
 from common.forms import CreateCommentForm
 
 
@@ -94,3 +95,28 @@ class BookCheckoutView(LoginRequiredMixin, DetailView):
     model = Book
     template_name = 'checkout.html'
     login_url = 'login'
+
+    def post(self, request, *args, **kwargs):
+
+        book = self.get_object()
+
+        if not book.book_available:
+            messages.error(request, "This book is currently out of stock.")
+            return redirect('book-details', pk=book.pk)
+
+        order = Order.objects.create(
+            ordered_book=book,
+            user=request.user,
+            amount_paid=book.price
+        )
+
+        book.book_available = False
+        book.save()
+
+        return redirect('order-confirmation', pk=order.pk)
+
+
+class OrderConfirmationView(DetailView):
+    model = Order
+    template_name = 'order-confirmation.html'
+    context_object_name = 'order'

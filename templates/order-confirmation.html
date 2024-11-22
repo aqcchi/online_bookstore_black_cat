@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Order Confirmation</title>
+	<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="text/css">
+		body {
+			background-color: #FFFF99;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Order Details</h1>
+		<p>Product: {{ order.ordered_book.title }}</p>
+		<p>Price: ${{ order.total_amount }}</p>
+		<p>Date: {{ order.created_at }}</p>
+		<h1>Thank you for the purchase, {{ order.user }}!</h1>
+	</div>
+</body>
+
+</html>
+{% endblock content %}
