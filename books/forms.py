@@ -14,10 +14,27 @@ class BookAddForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple
     )
 
+    price = forms.DecimalField(
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Enter the book price in USD',
+            'min': '0.01',
+        }),
+    )
+
+    image_url = forms.URLField(
+        widget=forms.TextInput(attrs={'placeholder': 'Enter URL with the cover image'}),
+        required=False,
+    )
+
 
 class BookEditForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
+
+    authors = forms.ModelMultipleChoiceField(
+        queryset=Author.objects.all(),
+        widget=forms.SelectMultiple,
+    )
 
 

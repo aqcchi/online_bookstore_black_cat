@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
+    
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/author-add.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     
+<body>
   <h2>Add a new Author</h2>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" class="author-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Add Author</button>
+    <button type="submit" class="submit-btn">Add Author</button>
   </form>
+</body>
     
 {% endblock %}

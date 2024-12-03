@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/books-list.css' %}">
+{% endblock %}
+
 {% block content %}
     
 <hr>
@@ -7,7 +13,11 @@
     {% for book in object_list %}
     <div class="col">
         <div class="card" style="width: 13rem;">
-            <img src="{{ book.image_url }}" class="card-img-top" alt="...">
+            {% if book.image_url %}
+                <img src="{{ book.image_url }}" class="card-img-top" alt="...">
+            {% else %}
+                <img src="{% static 'images/placeholder-book-icon.png' %}" class="card-img-top" alt="Default image">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">
                 {% if book.title|length > 25 %}

@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/book-author-edit.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     
-<div class="container mt-4">
     <h2>Edit Book</h2>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="edit-book-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Save Changes</button>
-        <a href="{% url 'book-details' book.pk %}" class="btn btn-secondary">Cancel</a>
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn">Save Changes</button>
+            <a href="{% url 'book-details' book.pk %}" class="submit-not-btn">Cancel</a>
+        </div>
     </form>
-</div>
     
 {% endblock %}
