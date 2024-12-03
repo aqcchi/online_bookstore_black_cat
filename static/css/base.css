@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 h1 {
-    color: red;
+    font-family: cursive;
+    color: #FFD700;
 }
 
 *{
@@ -16,8 +18,6 @@ body{
     align-items: center;
     justify-content: center;
 }
-
-
 
 .search{
     position: relative;
@@ -60,6 +60,7 @@ body{
     font-size: 22px;
 }
 
+
 /*!* Style for the main heading *!*/
 /*h1 {*/
 /*    font-size: 36px;*/
@@ -85,3 +86,4 @@ body{
 /*    border-radius: 8px;*/
 /*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 /*}*/
+

@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/book-author-delete.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
+   
+<body>
+    <h3>Are you sure you want to delete this book?</h3>
+    <p>
+        <strong>{{ book.title }}</strong> by 
+        {% for author in book.authors.all %}
+            {{ author }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
     
-<h3>Are you sure you want to delete this book?</h3>
-<p><strong>{{ book.title }}</strong> by 
-    {% for author in book.authors.all %}
-        {{ author }}{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-    {% if author not in book.authors.all %}
-        <span>Unknown</span>
-    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, delete it</button>
+    </form>
+    
+    <p><a href="{% url 'book-details' pk=book.pk %}">Cancel</a></p>
 
-<form method="POST">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete it</button>
-</form>
-
-<p><a href="{% url 'book-details' pk=book.pk %}">Cancel</a></p>
+</body>
 
 {% endblock %}

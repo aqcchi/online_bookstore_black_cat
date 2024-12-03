@@ -1,11 +1,60 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/book-add.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     
   <h2>Add a new Book</h2>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" class="book-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Add Book</button>
-  </form>
     
+    <div class="form-group">
+      <label for="{{ form.title.id_for_label }}">Title</label>
+      {{ form.title }}
+    </div>
+      
+    <div class="form-group">
+      <label for="{{ form.authors.id_for_label }}">Authors</label>
+      <div class="author-checkboxes">
+        {% for author in form.authors %}
+          <div class="author-checkbox">
+            {{ author.tag }}
+            <label for="{{ author.id_for_label }}">{{ author.choice_label }}</label>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.description.id_for_label }}">Description</label>
+      {{ form.description }}
+    </div>
+      
+    <div class="form-group">
+      <label for="{{ form.price.id_for_label }}">Price</label>
+      {{ form.price }}
+    </div>
+      
+    <div class="form-group">
+      <label for="{{ form.image_url.id_for_label }}">Image URL </label>
+      {{ form.image_url }}
+    </div>
+  
+    <div class="form-group">
+        <div class="available-checkbox">
+            <label for="{{ form.book_available.id_for_label }}">Book Available</label>
+        </div>
+        {{ form.book_available }}
+    </div>
+  
+    <div class="form-group">
+      <label for="{{ form.condition.id_for_label }}">Condition</label>
+      {{ form.condition }}
+    </div>
+  
+    <button type="submit" class="submit-btn">Add Book</button>
+  </form>
 {% endblock %}

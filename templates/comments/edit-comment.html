@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/edit-delete-comment.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     
 <h3>Edit Comment</h3>
 
-<form method="POST">
+<form method="POST" class="edit-comment-form">
     {% csrf_token %}
-    {{ form.as_p }}  
+    {{ form.text }}  
     <button type="submit" class="btn btn-success">Save Changes</button>
 </form>
 

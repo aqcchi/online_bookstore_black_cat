@@ -1,0 +1,34 @@
+h3 {
+    font-family: cursive;
+    color: #FFD700;
+}
+
+/* Center the entire container */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
+.welcome-message {
+    font-family: 'Arial', serif;
+}
+
+.contact-us ul {
+    list-style: none;
+    padding: 5px;
+}
+
+.contact-us a {
+    font-family: 'Arial', serif;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.contact-us a:hover {
+    color: #FFD700;
+}

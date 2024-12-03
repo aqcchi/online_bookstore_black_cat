@@ -1,8 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
-    
-<div class="welcome-message">
-    {{ welcome_message|safe }}
-</div>
-    
+<body>
+    <div class="center-container">
+        <div class="welcome-message">
+            {{ welcome_message|safe }}
+        </div>
+        <div class="contact-us">
+            <h3>CONTACT US:</h3>
+            <ul>
+                <li>
+                    <a href="mailto:cherniyat_kotarak@outlook.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/profile.php?id=100092841134506" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/cherniyat_kotarak" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
 {% endblock content %}
