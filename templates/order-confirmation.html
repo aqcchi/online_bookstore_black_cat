@@ -20,7 +20,7 @@
 	<div class="container">
 		<h1>Order Details</h1>
 		<p>Product: {{ order.ordered_book.title }}</p>
-		<p>Price: ${{ order.total_amount }}</p>
+		<p>Price: ${{ order.amount_paid }}</p>
 		<p>Date: {{ order.created_at }}</p>
 		<h1>Thank you for the purchase, {{ order.user }}!</h1>
 	</div>

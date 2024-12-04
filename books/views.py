@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.db.models.functions import Concat
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -134,3 +135,31 @@ class OrderConfirmationView(DetailView):
     model = Order
     template_name = 'order-confirmation.html'
     context_object_name = 'order'
+
+    def get(self, request, *args, **kwargs):
+        order = self.get_object()
+
+        # Mark the order as completed
+        order.is_completed = True
+        order.save()
+
+        # Update the cache directly (optional)
+        total_sales = cache.get('total_sales', 0)
+        total_sales += order.amount_paid
+        cache.set('total_sales', total_sales)
+
+        return super().get(request, *args, **kwargs)
+
+
+def total_sales_view(request):
+    if not request.user.is_superuser:
+        # If the user is not a superuser, redirect to a different page (e.g., home page)
+        messages.error(request, "You do not have permission to view this page.")
+        return redirect('homepage')  # Adjust the redirection to an appropriate URL
+
+    # Retrieve total sales from the cache
+    total_sales = cache.get('total_sales', 0)
+    # print(total_sales)
+
+    # Render the template with the total sales value
+    return render(request, 'total-sales.html', {'total_sales': total_sales})
