@@ -1,18 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/search-results.css' %}">
+{% endblock %}
 
 {% block title %}Search{% endblock title %}
 
 {% block content %}
+  <div class="container mt-5">
+    <h3 class="text-success">Search Results</h3>
+    <hr>
 
-    <h3 class = "text-secondary">Search Results</h3><hr>
-
-    {% for every in object_list %}
-        <div>
-            <h3><a href="{% url 'book-details' every.pk %}">{{ every.title }}</a></h3>
-            <p>Author: {{ every.author }}</p>
+    {% for book in books %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'book-details' book.pk %}" class="text-decoration-none">{{ book.title }}</a>
+          </h5>
+          <p class="card-text">
+            Author:
+            {% for author in book.authors.all %}
+              <a href="{% url 'author-details' author.pk %}">
+                {{ author.first_name }} {{ author.last_name }}
+              </a>
+              {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
         </div>
+      </div>
     {% empty %}
-    <h5 class="text-danger">Nothing found :(</h5>
+      <div class="alert alert-danger" role="alert">
+        <h5 class="text-center">Nothing found :(</h5>
+      </div>
     {% endfor %}
-
+  </div>
 {% endblock content %}
