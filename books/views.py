@@ -1,9 +1,10 @@
+from django.db.models.functions import Concat
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.db.models import Q
+from django.db.models import Q, Value
 
 from books.forms import BookAddForm, BookEditForm
 from books.models import Book, Order
@@ -84,11 +85,24 @@ class SearchResultsListView(ListView):
     model = Book
     template_name = 'search-results.html'
 
-    def get_queryset(self):  # new
+    def get_queryset(self):
         query = self.request.GET.get('q')
-        return Book.objects.filter(
-            Q(title__icontains=query) | Q(author__icontains=query)
-            )
+        if not query:
+            return Book.objects.none()
+
+        return Book.objects.annotate(
+            full_name=Concat('authors__first_name', Value(' '), 'authors__last_name')
+        ).filter(
+            Q(title__icontains=query) |
+            Q(authors__first_name__icontains=query) |
+            Q(authors__last_name__icontains=query) |
+            Q(full_name__icontains=query)
+        ).distinct()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['books'] = context['object_list']
+        return context
 
 
 class BookCheckoutView(LoginRequiredMixin, DetailView):
