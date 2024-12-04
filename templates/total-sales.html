@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <style>
+        p {
+            margin: 10px 0 ;
+            font-family: cursive;
+            font-weight: normal;
+        }
+
+        .container {
+            border: 2px solid #FFD700;
+            padding: 20px; /* Padding inside the container */
+            margin: 20px auto; /* Margin to center the container */
+            max-width: 600px; /* Optional: control the width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        div .container {
+            background-color: #FFFAA0;
+        }
+    </style>
+{% endblock extra_css %}
+
+{% block content %}
+    
+<body>
+
+    <h1>Total Sales:</h1>
+    <div class="container">
+        <p>The total sales from all purchases are: <strong>${{ total_sales }}</strong></p>
+    </div>
+
+</body>
+    
+{% endblock %}

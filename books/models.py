@@ -71,6 +71,8 @@ class Order(models.Model):
         default=0.00,
     )
 
+    is_completed = models.BooleanField(default=False)
+
     def save(self, *args, **kwargs):
         if self.ordered_book:
             self.amount_paid = self.ordered_book.price

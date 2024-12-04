@@ -13,6 +13,8 @@ urlpatterns = [
     path('search/', views.SearchResultsListView.as_view(), name='search_results'),
     path('<int:pk>/checkout/', views.BookCheckoutView.as_view(), name='checkout'),
     path('order-confirmation/<int:pk>/', views.OrderConfirmationView.as_view(), name='order-confirmation'),
+
+    path('total-sales/', views.total_sales_view, name='total-sales'),
 ]
 
 
