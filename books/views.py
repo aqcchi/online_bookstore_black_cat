@@ -139,7 +139,6 @@ class OrderConfirmationView(DetailView):
     def get(self, request, *args, **kwargs):
         order = self.get_object()
 
-        # Mark the order as completed
         order.is_completed = True
         order.save()
 
@@ -148,7 +147,7 @@ class OrderConfirmationView(DetailView):
         total_sales += order.amount_paid
         cache.set('total_sales', total_sales)
 
-        return super().get(request, *args, **kwargs)
+        return render(request, self.template_name, {'order': order})
 
 
 def total_sales_view(request):
