@@ -29,10 +29,18 @@
 }
 
 .profile-details p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 10px 0;
 }
 
 .profile-details strong {
     color: #555;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
