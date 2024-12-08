@@ -8,24 +8,26 @@
 {% block content %}
 
 <body>
-    <h1>Profile Details</h1>
-    
-    <div class="profile-details">
-        <p><strong>Profile Picture:</strong></p>
-        {% if profile.profile_picture %}
-            <img src="{{ profile.profile_picture }}" alt="Profile Picture" class="profile-picture">
-        {% else %}
-            <p>No profile picture available.</p>  <!-- gotta add static pic -->
-        {% endif %}
-        <p><strong>Username:</strong> {{ profile.user.username }}</p>
-        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <div class="main-container">
+        <h1>Profile Details</h1>
         
-        <p><strong>Bio:</strong> {{ profile.bio|linebreaks }}</p>
-    </div>
-
-    <div class="action-buttons">
-        <a href="{% url 'profile-edit' %}" class="btn btn-primary">Edit Profile</a>
-        <a href="{% url 'profile-delete' %}" class="btn btn-danger">Delete Profile</a>
+        <div class="profile-details">
+            <p><strong>Profile Picture:</strong></p>
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <p>No profile picture available.</p>  <!-- gotta add static pic -->
+            {% endif %}
+            <p><strong>Username:</strong> {{ profile.user.username }}</p>
+            <p><strong>Email:</strong> {{ profile.user.email }}</p>
+            
+            <p><strong>Bio:</strong> {{ profile.bio|linebreaks }}</p>
+        </div>
+    
+        <div class="action-buttons">
+            <a href="{% url 'profile-edit' %}" class="btn btn-primary">Edit Profile</a>
+            <a href="{% url 'profile-delete' %}" class="btn btn-danger">Delete Profile</a>
+        </div>
     </div>
 </body>
     
