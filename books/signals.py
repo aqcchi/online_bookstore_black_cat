@@ -10,3 +10,5 @@ def update_total_sales(sender, instance, **kwargs):
         total_sales = cache.get('total_sales', 0)
         total_sales += instance.amount_paid
         cache.set('total_sales', total_sales)
+
+

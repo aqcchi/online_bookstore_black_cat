@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4CAF50;
+    font-size: 2rem;
+}
+
+.profile-details {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto 20px auto; /* Center the section on the page */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.profile-details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.profile-details strong {
+    color: #555;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover;
+    margin: 10px 0;
+    display: block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Default Profile Picture */
+.profile-details p img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.8; /* Makes it subtly different */
+}
+
+/* Action Buttons */
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-details {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
