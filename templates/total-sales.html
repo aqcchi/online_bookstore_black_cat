@@ -21,6 +21,10 @@
         div .container {
             background-color: #FFFAA0;
         }
+        
+        img {
+            border-radius: 50%;;
+        }
     </style>
 {% endblock extra_css %}
 
@@ -33,6 +37,8 @@
         <p>The total sales from all purchases are: <strong>${{ total_sales }}</strong></p>
     </div>
 
+    <img src="{% static 'images/smiling-cat.jpg' %}" alt="amazed cat image">
+
 </body>
-    
+
 {% endblock %}

@@ -7,9 +7,9 @@
 <div class="row">
     {% for author in object_list %}
     <div class="col">
-        <div class="card" style="width: 13rem;">
+        <div class="card" style="width: 14rem; height: 30rem; margin: 1rem;">
             {% if author.picture %}
-                <img src="{{ author.picture }}" class="card-img-top" alt="...">
+                <img src="{{ author.picture }}" class="card-img-top" style="height: 20rem;" alt="...">
             {% else %}
                 <img src="{% static 'images/placeholder-author-icon.png' %}" class="card-img-top" alt="Default image">
             {% endif %}

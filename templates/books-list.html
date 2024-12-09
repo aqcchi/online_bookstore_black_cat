@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/books-list.css' %}">
-{% endblock %}
-
 {% block content %}
+    
+    <style>
+        li {
+            list-style: none; /* Removes the dots */
+        }
+    </style>
     
 <hr>
     
-<div class="row">
+<div class="row" >
     {% for book in object_list %}
     <div class="col">
-        <div class="card" style="width: 13rem;">
+        <div class="card" style="width: 14rem; height: 35rem; margin: 1rem;">
             {% if book.image_url %}
-                <img src="{{ book.image_url }}" class="card-img-top" alt="...">
+                <img src="{{ book.image_url }}" class="card-img-top" style="height: 20rem;" alt="...">
             {% else %}
                 <img src="{% static 'images/placeholder-book-icon.png' %}" class="card-img-top" alt="Default image">
             {% endif %}
