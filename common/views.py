@@ -1,16 +1,13 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
-
 from books.models import Book
 from common.forms import CreateCommentForm
 from common.models import Comment
 
 
+@login_required
 def create_comment(request, book_id: int):
     if request.POST:
         book = Book.objects.get(pk=book_id)
@@ -57,7 +54,7 @@ def delete_comment(request, comment_id):
 
     # ensuring the user can only delete their own comment (already handled by template logic)
     if request.method == 'POST':
-        comment.delete()  # Delete the comment
+        comment.delete()
         return redirect('book-details', pk=comment.to_book.pk)
 
     return render(request, 'comments/delete-comment.html', {'comment': comment})

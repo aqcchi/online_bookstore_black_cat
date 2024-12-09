@@ -3,13 +3,12 @@ h3 {
     color: #FFD700;
 }
 
-/* Center the entire container */
 .center-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Full viewport height */
+    min-height: 100vh;
     text-align: center;
 }
 

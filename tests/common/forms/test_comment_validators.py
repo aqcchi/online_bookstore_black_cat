@@ -13,7 +13,7 @@ class CreateCommentFormTest(TestCase):
         self.author = Author.objects.create(first_name="Author First name", last_name="Author Last Name")
 
         self.book = Book.objects.create(title="Test Book")
-        self.book.authors.add(self.author) # adding author to the book
+        self.book.authors.add(self.author)  # adding author to the book
 
     def test_valid_form(self):
         # testing form is valid with appropriate data

@@ -1,4 +1,3 @@
-/* General card styling */
 .card {
     margin: 20px auto;
     display: flex;
@@ -10,7 +9,6 @@
     background-color: #fff;
 }
 
-/* Card image styling */
 .card-img-top {
     object-fit: cover;
     margin: 35px 10px;
@@ -21,7 +19,7 @@
 
 .card .row.no-gutters {
     display: flex;
-    flex-wrap: nowrap; /* image and content stay in one row */
+    flex-wrap: nowrap;
     width: 100%;
 }
 
@@ -89,8 +87,6 @@
     color: white;
 }
 
-
-/* Responsive row layout */
 .row.no-gutters {
     display: flex;
     flex-wrap: wrap;
@@ -129,8 +125,6 @@
     font-weight: bold;
     margin-bottom: 15px;
 }
-
-/* Comment section */
 
 .comment p {
     margin: 5px 0;
