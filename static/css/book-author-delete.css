@@ -21,3 +21,7 @@ a:hover {
     color: #0056b3; /* Darker blue on hover */
     text-decoration: underline;
 }
+
+img {
+    border-radius: 50%;
+}

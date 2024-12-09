@@ -39,7 +39,7 @@
           <!-- Superuser/staff ONLY functionalities -->
           {% if request.user.is_superuser%}
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'total-sales' %}">Total sales</a>
+                  <a class="nav-link" href="{% url 'total-sales' %}">Total Sales</a>
               </li>
           {% endif %}
         

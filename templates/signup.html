@@ -1,16 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock title%}
+{% block title %}Sign Up{% endblock title %}
 
 {% block content %}
-
-<h2>Sign up</h2>
-
-<form method="post">
-
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class = "btn btn-success" >Sign up</button>
-</form>
+        <style>
+            label {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+            
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1em;
+                resize: vertical;
+                box-sizing: border-box;
+                margin-bottom: 15px;
+                transition: border-color 0.3s;
+            }
+            
+            .form input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                font-size: 1em;
+            }
+        </style>
+    
+    <h2 style="text-align:center; font-size: 2em; color: #333;">Sign up</h2>
+    
+    <form class="form" method="post" style="max-width: 500px; margin: 0 auto;
+     padding: 20px; background-color: #f7f7f7; border-radius: 8px; 
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+    
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-success" style="width: 100%; padding: 12px;
+         background-color: #28a745; border: none; color: white; font-size: 1.1em; border-radius: 5px;
+            ">Sign up</button>
+    </form>
 
 {% endblock content %}

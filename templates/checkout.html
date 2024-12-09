@@ -34,8 +34,8 @@
                     <form method="post">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Complete Purchase</button>
+                        <a href="{% url 'book-details' book.pk %}" class="btn btn-secondary">Cancel</a>
                     </form>
-                    <a href="{% url 'book-details' book.pk %}" class="btn btn-secondary">Cancel</a>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 h2 {
+    margin: 32px;
     font-family: cursive;
     color: #FFD700;
     display: flex;
@@ -63,9 +64,9 @@ input:focus, select:focus, textarea:focus {
 .submit-not-btn {
     text-align: center;
     text-decoration: none;
-    padding: 5px;
+    padding: 13px 25px 11px 25px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #C70039;
     color: white;
 }
