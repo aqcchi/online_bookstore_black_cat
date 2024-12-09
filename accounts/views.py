@@ -1,10 +1,8 @@
 from django.contrib.auth import logout
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
-
 from accounts.forms import ProfileEditForm, CustomUserCreationForm
 from accounts.models import Profile
 
@@ -20,7 +18,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'profile'
 
     def get_object(self, *args, **kwargs):
-        # retrieving the profile for the currently logged-in user
+        # retrieving profile for current user
         return get_object_or_404(Profile, user=self.request.user)
 
 
@@ -43,7 +41,7 @@ class ProfileDeleteView(LoginRequiredMixin, DeleteView):
 
     def delete(self, request, *args, **kwargs):
 
-        profile = self.get_object()  # getting the profile instance
+        profile = self.get_object()  # getting profile instance
         profile.delete()  # triggers signal to delete associated user
 
         logout(request)  # logs out the user after deletion

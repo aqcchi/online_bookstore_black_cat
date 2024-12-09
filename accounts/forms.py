@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
 from .models import Profile
 
 
@@ -15,7 +14,7 @@ class ProfileEditForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     def save(self, commit=True):
-        profile = super().save(commit=False)  # get profile instance but no save yet
+        profile = super().save(commit=False)  # getting profile instance but no save yet
 
         if commit:
             profile.save()

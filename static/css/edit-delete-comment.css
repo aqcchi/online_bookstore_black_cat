@@ -1,7 +1,7 @@
 .edit-comment-form {
     display: flex;
-    flex-direction: column; /* Makes the form elements stack vertically */
-    gap: 15px; /* Adds space between form elements */
+    flex-direction: column;
+    gap: 15px;
 }
 
 textarea {

@@ -20,14 +20,11 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', None)
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', None) == 'True'
 
 ALLOWED_HOSTS = []
@@ -81,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'online_bookstore.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -95,7 +91,6 @@ DATABASES = {
         'PORT': config('DB_PORT', '5432'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

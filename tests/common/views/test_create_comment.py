@@ -8,7 +8,7 @@ from common.models import Comment
 class CreateCommentTest(TestCase):
 
     def setUp(self):
-        # Create test user and book
+
         self.user = User.objects.create_user(username='testuser', password='password')
         self.book = Book.objects.create(title='Test Book')
 

@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from django.contrib.auth.models import User
 from .models import Profile
 
 UserModel = get_user_model()
@@ -24,5 +23,3 @@ def delete_user_when_profile_deleted(sender, instance, **kwargs):
     if instance.user:
         instance.user.delete()
 
-
-#  create a signal for sending out emails when a new user signs up

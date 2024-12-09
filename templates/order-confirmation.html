@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html>
+    
+    <style>
+        img {
+            border-radius: 50%;
+        }
+        
+        p {
+            font-family: Arial, sans-serif; 
+            font-size: 16px; 
+            line-height: 1.5; 
+            color: #333; 
+            margin-bottom: 10px; 
+        }
+    </style>
 
 <head>
 	<title>Order Confirmation</title>
 	<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<style type="text/css">
+	<style>
 		body {
 			background-color: #FFFF99;
 		}
@@ -19,12 +32,13 @@
 <body>
 	<div class="container">
 		<h1>Order Details</h1>
-		<p>Product: {{ order.ordered_book.title }}</p>
-		<p>Price: ${{ order.amount_paid }}</p>
-		<p>Date: {{ order.created_at }}</p>
+		<p><strong>Product:</strong> {{ order.ordered_book.title }}</p>
+        <p><strong>Price:</strong> ${{ order.amount_paid }}</p>
+		<p><strong>Date:</strong> {{ order.created_at }}</p>
 		<h1>Thank you for the purchase, {{ order.user }}!</h1>
 	</div>
 </body>
-
-</html>
+    
+    <img src="{% static 'images/smiling-cat.jpg' %}" alt="amazed cat image">
+    
 {% endblock content %}
