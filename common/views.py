@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -31,6 +32,9 @@ def create_comment(request, book_id: int):
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
 
+    if comment.user != request.user:
+        raise PermissionDenied("You do not have permission to edit this comment.")
+
     # user can only edit their own comment (already handled by template logic)
     if request.method == 'POST':
         form = CreateCommentForm(request.POST, instance=comment)
@@ -47,6 +51,9 @@ def edit_comment(request, comment_id):
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.user != request.user:
+        raise PermissionDenied("You do not have permission to delete this comment.")
 
     # ensuring the user can only delete their own comment (already handled by template logic)
     if request.method == 'POST':
