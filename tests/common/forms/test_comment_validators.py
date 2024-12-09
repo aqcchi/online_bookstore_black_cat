@@ -1,11 +1,7 @@
-from django import forms
 from django.test import TestCase
-from django.core.exceptions import ValidationError
-
 from authors.models import Author
 from common.forms import CreateCommentForm
 from common.models import Comment
-from common.validators import no_profanity_validator
 from books.models import Book
 from accounts.models import User
 
@@ -35,20 +31,6 @@ class CreateCommentFormTest(TestCase):
         form = CreateCommentForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('text', form.errors)
-
-    # def test_invalid_profanity(self):
-    #     # Test that the form is invalid when the comment contains profanity
-    #     form_data = {
-    #         'text': 'This is a bad comment!',
-    #     }
-    #     form = CreateCommentForm(data=form_data)
-    #     self.assertFalse(form.is_valid())
-    #     self.assertIn('text', form.errors)
-    #
-    # def test_form_placeholder(self):
-    #     # Test that the form's textarea has the correct placeholder
-    #     form = CreateCommentForm()
-    #     self.assertIn('placeholder="Add comment..."', str(form))
 
     def test_form_save(self):
         # testing form can save valid comment

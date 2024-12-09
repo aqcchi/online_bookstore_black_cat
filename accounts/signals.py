@@ -10,7 +10,7 @@ UserModel = get_user_model()
 @receiver(post_save, sender=UserModel)
 def create_user_profile(sender, instance: UserModel, created: bool, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(user=instance, email=instance.email)
 
 
 @receiver(post_save, sender=UserModel)  # optional but good in case of updates

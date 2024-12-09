@@ -30,11 +30,11 @@ class EditCommentTest(TestCase):
         """Test that a user can't edit someone else's comment."""
         self.client.login(username='otheruser', password='password')
         response = self.client.post(self.edit_comment_url, {'text': 'Updated comment text.'})
-        self.assertEqual(response.status_code, 403)  # Forbidden, as the user can't edit the comment
+        self.assertEqual(response.status_code, 403)
 
     def test_edit_comment_get(self):
         """Test GET request for editing a comment."""
         self.client.login(username='testuser', password='password')
         response = self.client.get(self.edit_comment_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.comment.text)  # The form should be prepopulated with the comment text
+        self.assertContains(response, self.comment.text)  # form should be prepopulated with comment text
