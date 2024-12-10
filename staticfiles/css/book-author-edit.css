@@ -1,0 +1,68 @@
+h2 {
+    margin: 32px;
+    font-family: cursive;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-book-form,
+.edit-author-form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFAA0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.submit-btn {
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    margin: 5px 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4CAF50;
+}
+
+.submit-not-btn {
+    text-align: center;
+    text-decoration: none;
+    padding: 13px 25px 11px 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #C70039;
+    color: white;
+}
+
+.submit-not-btn:hover {
+    background-color:  #900C3F;
+}

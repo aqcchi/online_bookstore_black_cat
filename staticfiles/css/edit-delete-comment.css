@@ -1,0 +1,18 @@
+.edit-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+textarea {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+}
+
+.btn-btn-success {
+    width: auto;
+    max-width: 50%;
+    align-self: flex-start;
+}
