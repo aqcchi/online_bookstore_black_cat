@@ -23,11 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-SECRET_KEY = config('SECRET_KEY', None)
+SECRET_KEY = os.getenv('SECRET_KEY', config('SECRET_KEY'))
 
-DEBUG = config('DEBUG', None) == 'True'
+DEBUG = os.getenv('DEBUG', config('DEBUG')) == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', config('ALLOWED_HOSTS')).split(',')
+
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', config('CSRF_TRUSTED_ORIGINS', [])).split(',')
 
 
 # Application definition
@@ -84,11 +86,11 @@ WSGI_APPLICATION = 'online_bookstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST', 'localhost'),
-        'PORT': config('DB_PORT', '5432'),
+        'NAME': os.getenv('DB_NAME', config('DB_NAME')),
+        'USER': os.getenv('DB_USER', config('DB_USER')),
+        'PASSWORD': os.getenv('DB_PASSWORD', config('DB_PASSWORD')),
+        'HOST': os.getenv('DB_HOST', config('DB_HOST')),
+        'PORT': os.getenv('DB_PORT', config('DB_PORT')),
     }
 }
 
