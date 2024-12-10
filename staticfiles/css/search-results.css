@@ -1,0 +1,16 @@
+.card-body {
+  background-color: #FFFAA0;
+}
+
+h5 a {
+  color: #DAA520;
+}
+
+p a {
+  color: #00AB66;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
