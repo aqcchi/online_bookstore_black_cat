@@ -32,4 +32,3 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('ordered_book', 'user', 'created_at')
     search_fields = ('ordered_book__title', 'user__username')
     ordering = ('created_at',)
-

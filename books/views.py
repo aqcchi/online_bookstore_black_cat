@@ -99,6 +99,7 @@ class BookCheckoutView(LoginRequiredMixin, DetailView):
     model = Book
     template_name = 'checkout.html'
     login_url = 'login'
+    context_object_name = 'book'
 
     def post(self, request, *args, **kwargs):
 
