@@ -19,6 +19,7 @@ class CreateCommentTest(TestCase):
         """Test creating a comment successfully."""
         self.client.login(username='testuser', password='password')
         response = self.client.post(self.create_comment_url, {'text': 'New comment text.'})
+        
         self.assertRedirects(response, reverse('book-details', kwargs={'pk': self.book.pk}))
         self.assertEqual(Comment.objects.count(), 1)  # Comment count should increase by 1
 
