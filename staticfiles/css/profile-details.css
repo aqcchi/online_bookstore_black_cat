@@ -1,0 +1,47 @@
+
+.main-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-container h1 {
+    color: #FFD700;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile-details p {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.profile-details strong {
+    color: #555;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.action-buttons .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    width: 150px;
+}
