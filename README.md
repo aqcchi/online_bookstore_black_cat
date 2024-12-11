@@ -6,6 +6,11 @@ This project demonstrates modern web development practices with Django, PostgreS
 
 ---
 
+Additional info and credentials:
+https://docs.google.com/document/d/15SPntVDRTw-9-IOiTp2pIqjQa-bROF0Slr_dZeFFaIY/edit?usp=sharing
+
+---
+
 ## Installation 🛠️
 
 Follow these steps to set up the project locally:
@@ -88,11 +93,6 @@ Follow these steps to set up the project locally:
 
 ---
 
-#### License 📜
-
-  This project is licensed under the MIT License.
-
----
 
 #### Contact 📬
 
