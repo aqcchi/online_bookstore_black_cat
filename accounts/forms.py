@@ -9,15 +9,8 @@ class ProfileEditForm(forms.ModelForm):
         model = Profile
         exclude = ['user', 'email']
 
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)  # getting user instance
-        super().__init__(*args, **kwargs)
-
     def save(self, commit=True):
-        profile = super().save(commit=False)  # getting profile instance but no save yet
-
-        if commit:
-            profile.save()
+        profile = super().save(commit)  # getting profile instance
 
         return profile
 

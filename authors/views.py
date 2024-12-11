@@ -25,7 +25,6 @@ class AuthorEditView(LoginRequiredMixin, StaffOrSuperuserMixin, UpdateView):
     template_name = 'authors/author-edit.html'
 
     def get_success_url(self):
-        # redirecting to author details page for current book
         return reverse_lazy('author-details', kwargs={'pk': self.object.pk})
 
 
