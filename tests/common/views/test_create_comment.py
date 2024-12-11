@@ -23,6 +23,11 @@ class CreateCommentTest(TestCase):
         self.assertEqual(Comment.objects.count(), 1)  # Comment count should increase by 1
 
     def test_create_comment_invalid_request(self):
-        """Test invalid request for creating a comment (non-POST request)."""
-        response = self.client.get(self.create_comment_url)
-        self.assertEqual(response.status_code, 400)  # Invalid request
+    """Test invalid request for creating a comment (non-POST request)."""
+    self.client.login(username='testuser', password='password')
+
+    # Send a GET request (invalid for creating a comment)
+    response = self.client.get(self.create_comment_url)
+
+    # Assert that the response status code is 400 (Bad Request) as per the view
+    self.assertEqual(response.status_code, 400)
