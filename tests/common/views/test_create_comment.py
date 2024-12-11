@@ -19,10 +19,17 @@ class CreateCommentTest(TestCase):
         """Test creating a comment successfully."""
         self.client.login(username='testuser', password='password')
         response = self.client.post(self.create_comment_url, {'text': 'New comment text.'})
+        
         self.assertRedirects(response, reverse('book-details', kwargs={'pk': self.book.pk}))
         self.assertEqual(Comment.objects.count(), 1)  # Comment count should increase by 1
 
     def test_create_comment_invalid_request(self):
+    
         """Test invalid request for creating a comment (non-POST request)."""
+        self.client.login(username='testuser', password='password')
+
+        # Send a GET request (invalid for creating a comment)
         response = self.client.get(self.create_comment_url)
-        self.assertEqual(response.status_code, 400)  # Invalid request
+
+        # Assert that the response status code is 400 (Bad Request) as per the view
+        self.assertEqual(response.status_code, 400)
