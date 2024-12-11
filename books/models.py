@@ -53,14 +53,14 @@ class Order(models.Model):
         max_length=100,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL
+        on_delete=models.CASCADE
     )
 
     user = models.ForeignKey(
         to=User,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -75,5 +75,11 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         if self.ordered_book:
-            self.amount_paid = self.ordered_book.price
+            self.amount_paid = self.ordered_book.price or 0  # if price is None
+        else:
+            self.amount_paid = 0
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Order #{self.id}"
+
