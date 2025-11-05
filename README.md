@@ -17,7 +17,7 @@ Follow these steps to set up the project locally:
 
 #### 1. Clone the Repository 📥
 
-    git clone [https://github.com/aqcchi/online_bookstore.git]
+    git clone [https://github.com/aqcchi/online_bookstore_black_cat.git]
     cd online_bookstore
 
 #### 2. Set Up Virtual Environment 🌐
